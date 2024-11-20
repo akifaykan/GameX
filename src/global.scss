@@ -1,0 +1,35 @@
+:root {
+	--font: "Poppins", sans-serif;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+}
+
+*, ::before, ::after {
+	border-color: #e5e7eb1c !important;
+}
+
+body {
+	font-size: 1rem;
+	font-family: var(--font);
+	font-weight: normal;
+
+	word-wrap: break-word;
+	text-rendering: optimizeLegibility;
+}
+
+.GameMain {
+	min-height: 100vh;
+	padding: 3rem;
+	color: #fff;
+	font-size: 1.2rem;
+
+	section[aria-label] div[data-title],
+	button {
+		color: initial;
+	}
+}
