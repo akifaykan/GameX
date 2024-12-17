@@ -8,21 +8,22 @@ import {
     TableBody,
     TableCell,
     TableHead,
-    TableHeader, 
+    TableHeader,
     TableRow,
 } from "@/components/ui/table"
 
 import { useState, useEffect, useMemo, useRef } from "react"
+import { useQuery } from "@tanstack/react-query";
 
 function Game() {
     const populationPercentCount = 100
     const populationIncreasedCount = 10
-    const pickaxeBasePrice = 20;
+    const pickaxeBasePrice = 20
 
     const [money, setMoney] = useState(100)
     // MATERIALS
     const [pickaxes, setPickaxes] = useState([])
-    const [pickaxePrice, setPickaxePrice] = useState(20);
+    const [pickaxePrice, setPickaxePrice] = useState(20)
     // MINERALS
     const [minerals, setMinerals] = useState(0)
     const [mineralPrice, setMineralPrice] = useState(10)
@@ -30,7 +31,7 @@ function Game() {
     const [population, setPopulation] = useState(100)
     const [totalMineralsSold, setTotalMineralsSold] = useState(0)
     const [merchants, setMerchants] = useState(0);
-    const [potentialMerchants, setPotentialMerchants] = useState(0);
+    const [potentialMerchants, setPotentialMerchants] = useState(0)
 
     const minPrice = 3
     const maxPrice = 20
@@ -58,7 +59,7 @@ function Game() {
 
     useEffect(() => {
         const timers = [];
-    
+
         for (let i = 0; i < merchants; i++) {
             const interval = setInterval(() => {
                 if (money >= pickaxePrice) {
@@ -69,7 +70,7 @@ function Game() {
             }, 10000);
             timers.push(interval);
         }
-    
+
         return () => timers.forEach(clearInterval);
     }, [merchants, money, pickaxePrice]);
 
@@ -91,7 +92,7 @@ function Game() {
             setPopulation(prevPopulation => prevPopulation + populationIncreasedCount)
         }
     }, [totalMineralsSold])
-    
+
     useEffect(() => {
         updateDemandAndBuyers()
     }, [population])
